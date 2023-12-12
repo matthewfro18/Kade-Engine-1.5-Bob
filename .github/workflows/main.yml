@@ -98,7 +98,7 @@ jobs:
           haxelib install tjson 1.4.0
           haxelib install hxjsonast 1.1.0
           haxelib install hxCodec 2.6.0
-          haxelib install newgrounds 2.0.0
+          haxelib install newgrounds
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib install hscript
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
