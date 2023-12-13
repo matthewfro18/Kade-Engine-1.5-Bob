@@ -24,6 +24,11 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	var curSelected:Int = 0;
+	var MainMenuSpin:Int = 0;
+	var timer:Float = 0;
+	var secretmusic:FlxSound;
+	var secretguy:FlxSprite;
+	var isguydancing:Bool = false;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
@@ -37,10 +42,10 @@ class MainMenuState extends MusicBeatState
 	var newGaming2:FlxText;
 	public static var firstStart:Bool = true;
 
-	public static var nightly:String = "";
+	public static var nightly:String = "bob";
 
-	public static var kadeEngineVer:String = "1.5" + nightly;
-	public static var gameVer:String = "0.2.7.1";
+	public static var kadeEngineVer:String = "bob" + nightly;
+	public static var gameVer:String = "BOB";
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
@@ -48,6 +53,11 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+		/**if (FlxG.random.bool(4))
+		{
+			GuyAppears(FlxG.random.int(1, 3));
+		}**/
+
 		#if windows
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -165,7 +175,8 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					fancyOpenURL("https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game");
+					FlxG.sound.play(Paths.sound('fartsoundlol'));
+					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 				}
 				else
 				{
@@ -235,7 +246,65 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new OptionsMenu());
 		}
 	}
-
+	function GuyAppears(rando)
+	{
+		if (rando == 1)
+		{
+			secretmusic = new FlxSound().loadEmbedded(Paths.sound('GuyDancing'));
+			secretmusic.looped = true;
+			secretmusic.volume = 0.3;
+			secretguy = new FlxSprite(0, 0);
+			secretguy.frames = Paths.getSparrowAtlas('CoolDance');
+			secretguy.animation.addByPrefix('idle', 'CoolGuy', 24);
+			secretguy.updateHitbox();
+			secretguy.scrollFactor.set();
+			add(secretguy);
+			secretmusic.play();
+			secretguy.animation.play('idle');
+		}
+		if (rando == 2)
+			{
+				secretmusic = new FlxSound().loadEmbedded(Paths.sound('SortingAlgorithm'));
+				secretmusic.looped = true;
+				secretmusic.volume = 0.3;
+				secretguy = new FlxSprite(0, 0);
+				secretguy.frames = Paths.getSparrowAtlas('Sorting');
+				secretguy.animation.addByPrefix('idle', 'Sorting', 24);
+				secretguy.updateHitbox();
+				secretguy.scrollFactor.set();
+				add(secretguy);
+				secretmusic.play();
+				secretguy.animation.play('idle');
+			}
+		if (rando == 3)
+				{
+					secretmusic = new FlxSound().loadEmbedded(Paths.sound('SpongSound'));
+					secretmusic.looped = true;
+					secretmusic.volume = 0.3;
+					secretguy = new FlxSprite(0, 0);
+					secretguy.frames = Paths.getSparrowAtlas('Spong');
+					secretguy.animation.addByPrefix('idle', 'Dad idle dance', 24);
+					secretguy.updateHitbox();
+					secretguy.scrollFactor.set();
+					add(secretguy);
+					secretmusic.play();
+					secretguy.animation.play('idle');
+				}
+		if (rando == 4)
+			{
+				secretmusic = new FlxSound().loadEmbedded(Paths.sound('crazy_little_guy'));
+				secretmusic.looped = true;
+				secretmusic.volume = 0.5;
+				secretguy = new FlxSprite(0, 0);
+				secretguy.frames = Paths.getSparrowAtlas('campaign_menu_UI_characters');
+				secretguy.animation.addByPrefix('idle', 'BOBBY BOBINO BOBBLE menu asset', 60);
+				secretguy.updateHitbox();
+				secretguy.scrollFactor.set();
+				add(secretguy);
+				secretmusic.play();
+				secretguy.animation.play('idle');
+			}
+	}
 	function changeItem(huh:Int = 0)
 	{
 		if (finishedFunnyMove)
