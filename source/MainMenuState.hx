@@ -42,10 +42,10 @@ class MainMenuState extends MusicBeatState
 	var newGaming2:FlxText;
 	public static var firstStart:Bool = true;
 
-	public static var nightly:String = "bob";
+	public static var nightly:String = "";
 
-	public static var kadeEngineVer:String = "bob" + nightly;
-	public static var gameVer:String = "BOB";
+	public static var kadeEngineVer:String = "1.5" + nightly;
+	public static var gameVer:String = "0.2.7.1";
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
