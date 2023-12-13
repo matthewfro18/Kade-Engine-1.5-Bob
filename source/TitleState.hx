@@ -178,8 +178,8 @@ class TitleState extends MusicBeatState
 
 		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
 		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
-		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		gfDance.animation.addByPrefix('idle', 'gfDancen', 24);
+		gfDance.animation.play('idle');
 		gfDance.antialiasing = true;
 		add(gfDance);
 		add(logoBl);
@@ -399,9 +399,10 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+				createCoolText(['A BUNCH OF IDIOTS']);
 			// credTextShit.visible = true;
 			case 3:
+				createCoolText(['A BUNCH OF IDIOTS']);
 				addMoreText('present');
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
@@ -411,20 +412,18 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				if (Main.watermarks)
-					createCoolText(['Kade Engine', 'by']);
-				else
-					createCoolText(['In Partnership', 'with']);
+				createCoolText(['in association', 'with']);
 			case 7:
-				if (Main.watermarks)
-					addMoreText('KadeDeveloper');
-				else
+				deleteCoolText();
+				if (!skippedIntro)
 				{
-					addMoreText('Newgrounds');
-					ngSpr.visible = true;
+					FlxG.sound.music.fadeIn(0.01, 0.7, 0);
 				}
+				addMoreText('bob');
+				ngSpr.visible = true;
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
+				FlxG.sound.music.fadeIn(0.01, 0, 0.7);
 				deleteCoolText();
 				ngSpr.visible = false;
 			// credTextShit.visible = false;
@@ -443,13 +442,13 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Friday');
+				addMoreText('literally');
 			// credTextShit.visible = true;
 			case 14:
-				addMoreText('Night');
+				addMoreText('every fnf mod');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+				addMoreText('ever'); // credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();
