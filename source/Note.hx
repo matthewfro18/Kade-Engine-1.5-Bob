@@ -6,6 +6,8 @@ import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import flixel.util.FlxColor;
+import flixel.effects.particles.FlxEmitter;
+import flixel.effects.particles.FlxParticle;
 #if polymod
 import polymod.format.ParseRules.TargetSignatureElement;
 #end
@@ -58,6 +60,98 @@ class Note extends FlxSprite
 		this.noteData = noteData;
 
 		var daStage:String = PlayState.curStage;
+		if (warning)
+		{
+			frames = Paths.getSparrowAtlas('bob/CustomNotes');
+
+				animation.addByPrefix('greenScroll', 'vertedUp');
+				animation.addByPrefix('redScroll', 'vertedRight');
+				animation.addByPrefix('blueScroll', 'vertedDown');
+				animation.addByPrefix('purpleScroll', 'vertedLeft');
+
+				setGraphicSize(Std.int(width * 0.7));
+				updateHitbox();
+				antialiasing = true;
+		}
+		else if (mustHitNotes)
+		{
+			frames = Paths.getSparrowAtlas('bob/CustomNotes');
+			/*emitter = new FlxEmitter();
+			for (i in 0 ... 10)
+			{
+				var p:FlxParticle = new FlxParticle();
+				p.loadGraphic("bob/notelol", false, 32, 32);
+				// p.animation.add("my-sparkle", [0,1,2,3], 10, true);
+				// p.animation.play("my-sparkle");
+				p.exists = false;
+				emitter.add(p);
+			}
+			//add(emitter);
+			emitter.start(false, 1, 0.02);
+			didnt work lol*/
+			
+				animation.addByPrefix('greenScroll', 'hitUp');
+				animation.addByPrefix('redScroll', 'hitRight');
+				animation.addByPrefix('blueScroll', 'hitDown');
+				animation.addByPrefix('purpleScroll', 'hitLeft');
+
+				setGraphicSize(Std.int(width * 0.7));
+				updateHitbox();
+				antialiasing = true;
+		}
+		else
+		{
+			switch (daStage)
+		{
+			case 'school' | 'schoolEvil':
+				loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
+
+				animation.add('greenScroll', [6]);
+				animation.add('redScroll', [7]);
+				animation.add('blueScroll', [5]);
+				animation.add('purpleScroll', [4]);
+
+				if (isSustainNote)
+				{
+					loadGraphic(Paths.image('weeb/pixelUI/arrowEnds'), true, 7, 6);
+
+					animation.add('purpleholdend', [4]);
+					animation.add('greenholdend', [6]);
+					animation.add('redholdend', [7]);
+					animation.add('blueholdend', [5]);
+
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
+				}
+
+				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+				updateHitbox();
+
+			default:
+				frames = Paths.getSparrowAtlas('NOTE_assets');
+
+				animation.addByPrefix('greenScroll', 'green0');
+				animation.addByPrefix('redScroll', 'red0');
+				animation.addByPrefix('blueScroll', 'blue0');
+				animation.addByPrefix('purpleScroll', 'purple0');
+
+				animation.addByPrefix('purpleholdend', 'pruple end hold');
+				animation.addByPrefix('greenholdend', 'green hold end');
+				animation.addByPrefix('redholdend', 'red hold end');
+				animation.addByPrefix('blueholdend', 'blue hold end');
+
+				animation.addByPrefix('purplehold', 'purple hold piece');
+				animation.addByPrefix('greenhold', 'green hold piece');
+				animation.addByPrefix('redhold', 'red hold piece');
+				animation.addByPrefix('bluehold', 'blue hold piece');
+
+				setGraphicSize(Std.int(width * 0.7));
+				updateHitbox();
+				antialiasing = true;
+		}
+		}
 
 		switch (PlayState.SONG.noteStyle)
 		{
