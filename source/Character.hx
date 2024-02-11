@@ -578,7 +578,7 @@ class Character extends FlxSprite
 				addOffset("singLEFT", 98, -27);
 				addOffset("singRIGHT", -89, -51);
 				addOffset("singDOWN", 40, -120);
-				addOffset("Ugh", 71, -40);
+				addOffset("cheer", 71, -40);
 			case 'little-man':
 					tex = Paths.getSparrowAtlas('Small_Guy');
 					frames = tex;
