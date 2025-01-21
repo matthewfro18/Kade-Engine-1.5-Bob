@@ -16,7 +16,7 @@ haxelib install hscript
 haxelib install hxdiscord_rpc 2.5.1
 haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
 haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
-haxelib git linc-luajit https://github.com/nebulazorua/linc_luajit
+haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
 haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
 haxelib git faxe https://github.com/ashea-code/faxe
 haxelib install actuate
