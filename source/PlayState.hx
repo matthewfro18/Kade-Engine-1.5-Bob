@@ -332,13 +332,13 @@ class PlayState extends MusicBeatState
 			case 'bopeebo':
 				dialogue = [
 					'HEY!',
-					"You think you can just sing\nwith my daughter like that?",
+					"You think you can just sing              \nwith my daughter like that?",
 					"If you want to date her...",
 					"You're going to have to go \nthrough ME first!"
 				];
 			case 'fresh':
-				dialogue = ["Not too shabby boy.", ""];
-			case 'dad battle':
+				dialogue = ["Not too shabby boy.", "pissed myself"];
+			case 'dadbattle':
 				dialogue = [
 					"gah you think you're hot stuff?",
 					"If you can beat me here...",
@@ -350,8 +350,20 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
 			case 'thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
+			case 'sunshine':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('sunshine/DumbDialogPhloxMade'));
+			case 'withered':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('withered/DumbDialogPhloxMade'));
+			case 'run':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('run/DumbDialogPhloxMade'));
+			case 'ron':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('ron/ronDialogue'));
+			case 'trouble':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('trouble/assfart'));
+			case 'onslaught':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('onslaught/help'));
+				
 		}
-
 		switch(SONG.stage)
 		{
 			case 'halloween': 
@@ -823,60 +835,6 @@ class PlayState extends MusicBeatState
 				ground.active = false;
 				ground.antialiasing = true;
 				add(ground);
-			}
-			case 'stage':
-				{
-						defaultCamZoom = 0.9;
-						curStage = 'stage';
-						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));
-						bg.antialiasing = true;
-						bg.scrollFactor.set(0.9, 0.9);
-						bg.active = false;
-						add(bg);
-	
-						var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stagefront'));
-						stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-						stageFront.updateHitbox();
-						stageFront.antialiasing = true;
-						stageFront.scrollFactor.set(0.9, 0.9);
-						stageFront.active = false;
-						add(stageFront);
-	
-						var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains'));
-						stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
-						stageCurtains.updateHitbox();
-						stageCurtains.antialiasing = true;
-						stageCurtains.scrollFactor.set(1.3, 1.3);
-						stageCurtains.active = false;
-	
-						add(stageCurtains);
-				}
-			default:
-			{
-					defaultCamZoom = 0.9;
-					curStage = 'stage';
-					var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));
-					bg.antialiasing = true;
-					bg.scrollFactor.set(0.9, 0.9);
-					bg.active = false;
-					add(bg);
-
-					var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stagefront'));
-					stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-					stageFront.updateHitbox();
-					stageFront.antialiasing = true;
-					stageFront.scrollFactor.set(0.9, 0.9);
-					stageFront.active = false;
-					add(stageFront);
-
-					var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains'));
-					stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
-					stageCurtains.updateHitbox();
-					stageCurtains.antialiasing = true;
-					stageCurtains.scrollFactor.set(1.3, 1.3);
-					stageCurtains.active = false;
-
-					add(stageCurtains);
 			}
 		}
 		var gfVersion:String = 'gf';
